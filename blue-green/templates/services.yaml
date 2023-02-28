@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: {{ template "helm-guestbook.fullname" . }}
   labels:
-    app: {{ template "helm-guestbook.name" . }}
+    appname: {{ template "helm-guestbook.name" . }}
     chart: {{ template "helm-guestbook.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
@@ -16,7 +16,7 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: {{ template "helm-guestbook.name" . }}
+    appname: {{ template "helm-guestbook.name" . }}
     release: {{ .Release.Name }}
 ---
 apiVersion: v1
@@ -24,7 +24,7 @@ kind: Service
 metadata:
   name: {{ template "helm-guestbook.fullname" . }}-preview
   labels:
-    app: {{ template "helm-guestbook.name" . }}
+    appname: {{ template "helm-guestbook.name" . }}
     chart: {{ template "helm-guestbook.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
@@ -36,5 +36,5 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: {{ template "helm-guestbook.name" . }}
+    appname: {{ template "helm-guestbook.name" . }}
     release: {{ .Release.Name }}
